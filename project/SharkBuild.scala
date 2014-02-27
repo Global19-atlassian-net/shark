@@ -33,7 +33,7 @@ object SharkBuild extends Build {
 
   val SHARK_ORGANIZATION = "edu.berkeley.cs.shark"
 
-  val HIVE_VERSION = "0.11.0-shark"
+  val HIVE_VERSION = "0.11.0-shark-dp-1"
 
   val SPARK_VERSION = "0.9.0-incubating"
 
@@ -78,7 +78,6 @@ object SharkBuild extends Build {
   //               all of our settings. Should be done for v0.9.1.
   // TODO(harvey): Exclude datanucleus
   val hiveArtifacts = Seq(
-    "hcatalog",
     "hive-anttasks",
     "hive-beeline",
     "hive-cli",
@@ -90,9 +89,7 @@ object SharkBuild extends Build {
     "hive-metastore",
     "hive-serde",
     "hive-service",
-    "hive-shims",
-    "webhcat-java-client",
-    "webhcat")
+    "hive-shims")
   val hiveDependencies = hiveArtifacts.map ( artifactId =>
     SHARK_ORGANIZATION % artifactId % HIVE_VERSION excludeAll(
       excludeGuava, excludeLog4j, excludeServlet, excludeAsm, excludeNetty, excludeXerces)
